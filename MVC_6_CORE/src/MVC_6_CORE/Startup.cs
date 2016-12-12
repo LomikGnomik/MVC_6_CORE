@@ -54,7 +54,7 @@ namespace MVC_6_CORE
             services.AddTransient<ISmsSender, AuthMessageSender>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        //  как приложение будет обрабатывать запрос. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
@@ -70,12 +70,12 @@ namespace MVC_6_CORE
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            // установка обработчика статических файлов
             app.UseStaticFiles();
-
+            // установка аутентификации пользователя на основе куки
             app.UseIdentity();
 
-            // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
+            // Установка компонентов MVC для обработки запроса
 
             app.UseMvc(routes =>
             {
